@@ -26,22 +26,49 @@ class LinkedList {
   }
 
   append(value) {
-    let newTail = {
+    const newTail = {
       value: value,
       next: null
     }
 
-    //this may seem strange, but it works because of the way a pointer works
+    //this may seem strange, but it works because of the way a pointer works (in this case, the 'next' pointer)
     this.tail.next = newTail;
     this.tail = newTail;
 
     this.length++
+
+    return this;
+  }
+
+  // prepend(value) {
+  //   const newHead = {
+  //     value: value,
+  //     next: this.head
+  //   }
+
+  //   this.head = newHead;
+  //   this.length++
+    
+  //   return this;
+  // }
+
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
   }
 }
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
+myLinkedList.prepend(1);
+
 
 console.log(JSON.stringify(myLinkedList))
 
