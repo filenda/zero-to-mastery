@@ -104,7 +104,7 @@ class LinkedList {
     return this.printList();
   }
 
-  //using while loop + traverseToIndex method
+  //using while loop + 'traverseToIndex' method
   insert(index, value) {
     //Check for proper parameters;
     if (index === 0) {
