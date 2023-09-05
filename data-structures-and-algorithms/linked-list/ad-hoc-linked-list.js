@@ -141,7 +141,25 @@ class LinkedList {
 
   //TODO: Implement deletion
   remove(index) {
+    let currentNode = this.head;
 
+    if (index === 0) {
+      this.head = currentNode.next
+    }
+    else {
+      for (let i = 1; i <= index; i++) {
+        currentNode = currentNode.next
+        if (i === index - 1) {
+          currentNode.next = currentNode.next.next
+          if (index >= this.length - 1) {
+            currentNode.next = null
+            this.tail = currentNode
+          }
+        }
+      }
+
+      this.length--
+    }
   }
 }
 
@@ -152,8 +170,8 @@ myLinkedList.prepend(1);
 myLinkedList.insert2(2, 99);
 myLinkedList.insert2(20, 88);
 myLinkedList.insert2(0, 38);
+myLinkedList.remove(0);
 
 console.log(myLinkedList.printList())
-
-
-
+console.log(myLinkedList.head)
+console.log(myLinkedList.tail)
