@@ -139,7 +139,18 @@ class LinkedList {
     return currentNode;
   }
 
-  //TODO: Implement deletion
+  //TOCHECK: Another version of the remove method using the traverse fn
+  //Missing this.head and this.tail care
+  remove2(index) {
+    // BEGIN-Check Parameters    
+    // END-Check Parameters  
+    const leader = this.traverseToIndex(index - 1);
+    const unwantedNode = leader.next;
+    leader.next = unwantedNode.next;
+    this.length--;
+    return this.printList();
+  }
+
   remove(index) {
     let currentNode = this.head;
 
@@ -155,6 +166,7 @@ class LinkedList {
             currentNode.next = null
             this.tail = currentNode
           }
+          break;
         }
       }
 
