@@ -50,7 +50,6 @@ class LinkedList {
     return array;
   }
 
-  //TODO: Finish this implementation
   insert(index, value) {
     if (index === 0) {
       return this.prepend(value);
