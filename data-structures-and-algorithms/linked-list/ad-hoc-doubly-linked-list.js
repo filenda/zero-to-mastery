@@ -112,11 +112,15 @@ class LinkedList {
     if (index === 0) {
       this.head = currentNode.next
     }
+    else if (index === 1) {
+      this.head.next = currentNode.next.next;
+    }
     else {
       for (let i = 1; i <= index; i++) {
         currentNode = currentNode.next
         if (i === index - 1) {
           currentNode.next = currentNode.next.next
+          currentNode.next.prev = currentNode
           if (index >= this.length - 1) {
             currentNode.next = null
             this.tail = currentNode
