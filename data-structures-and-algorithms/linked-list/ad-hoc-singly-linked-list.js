@@ -157,6 +157,9 @@ class LinkedList {
     if (index === 0) {
       this.head = currentNode.next
     }
+    else if (index === 1) {
+      this.head.next = currentNode.next.next;
+    }
     else {
       for (let i = 1; i <= index; i++) {
         currentNode = currentNode.next
@@ -182,7 +185,7 @@ myLinkedList.prepend(1);
 myLinkedList.insert2(2, 99);
 myLinkedList.insert2(20, 88);
 myLinkedList.insert2(0, 38);
-myLinkedList.remove(0);
+myLinkedList.remove(6);
 
 console.log(myLinkedList.printList())
 console.log(myLinkedList.head)
