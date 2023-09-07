@@ -65,7 +65,6 @@ class LinkedList {
       }
 
       if ((this.length - 1) / index >= 2) {
-        console.log("traversing from the head")
         let currentNode = this.head;
 
         for (let i = 1; i <= index; i++) {
@@ -82,7 +81,6 @@ class LinkedList {
         }
       }
       else {
-        console.log("traversing backwards from the tail")
         let currentNode = this.tail;
 
         for (let i = this.length - 1; i > 0; i--) {
@@ -107,30 +105,61 @@ class LinkedList {
 
   //TODO: Finish this implementation
   remove(index) {
-    let currentNode = this.head;
-
     if (index === 0) {
-      this.head = currentNode.next
+      this.head = this.head.next
     }
     else if (index === 1) {
-      this.head.next = currentNode.next.next;
+      this.head.next = this.head.next.next;
     }
     else {
-      for (let i = 1; i <= index; i++) {
-        currentNode = currentNode.next
-        if (i === index - 1) {
-          currentNode.next = currentNode.next.next
-          currentNode.next.prev = currentNode
-          if (index >= this.length - 1) {
-            currentNode.next = null
-            this.tail = currentNode
+      if ((this.length - 1) / index >= 2) {
+        console.log("traversing from the head")
+        let currentNode = this.head;
+
+        for (let i = 1; i <= index; i++) {
+          currentNode = currentNode.next
+          if (i === index - 1) {
+            currentNode.next = currentNode.next.next
+
+            if (index >= this.length - 1) {
+              this.tail = currentNode
+            }
+            else {
+              currentNode.next.prev = currentNode
+            }
+
+            break;
           }
-          break;
+        }
+      }
+      else {
+        //TODO: Implement reverse traversion
+        console.log("traversing backwards from the tail")
+
+        if (index >= this.length - 1) {
+          const theNodeBeforeTheTail = this.tail.prev
+          theNodeBeforeTheTail.next = null
+          this.tail = theNodeBeforeTheTail
+        }
+
+        let currentNode = this.tail;
+
+        for (let i = this.length - 2; i > 0; i--) {
+          // console.log("i", i)
+          // console.log("currentNode", currentNode)
+          currentNode = currentNode.prev
+          if (i === index - 1) {
+            currentNode.next = currentNode.next.next
+            currentNode.next.prev = currentNode
+
+            break;
+          }
         }
       }
 
-      this.length--
     }
+
+    this.length--
   }
 }
 
@@ -141,9 +170,9 @@ myLinkedList.prepend(1);
 myLinkedList.insert(1, 99);
 myLinkedList.insert(20, 88);
 myLinkedList.insert(0, 38);
-// myLinkedList.remove(0);
+myLinkedList.remove(5);
 
 console.log(myLinkedList.printList())
 console.log("myLinkedList.head: ", myLinkedList.head)
 console.log("myLinkedList.tail: ", myLinkedList.tail)
-console.log("myLinkedList.tail.next: ", myLinkedList.tail.next)
+// console.log("myLinkedList.tail.next: ", myLinkedList.tail.next)
