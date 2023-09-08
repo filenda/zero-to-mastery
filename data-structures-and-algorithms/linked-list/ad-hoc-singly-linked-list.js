@@ -177,8 +177,9 @@ class LinkedList {
     }
   }
 
+  //TODO: Implement reverse
   reverse() {
-    //TODO: Implement reverse
+
   }
 }
 
@@ -189,7 +190,7 @@ myLinkedList.prepend(1);
 myLinkedList.insert2(2, 99);
 myLinkedList.insert2(20, 88);
 myLinkedList.insert2(0, 38);
-myLinkedList.remove(6);
+// myLinkedList.remove(6);
 
 console.log(myLinkedList.printList())
 console.log(myLinkedList.head)
