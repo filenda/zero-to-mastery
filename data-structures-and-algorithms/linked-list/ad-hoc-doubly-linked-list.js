@@ -103,7 +103,6 @@ class LinkedList {
     }
   }
 
-  //TODO: Finish this implementation
   remove(index) {
     if (index === 0) {
       this.head = this.head.next
@@ -133,8 +132,6 @@ class LinkedList {
         }
       }
       else {
-        //TODO: Implement reverse traversion
-        console.log("traversing backwards from the tail")
 
         if (index >= this.length - 1) {
           const theNodeBeforeTheTail = this.tail.prev
@@ -145,8 +142,6 @@ class LinkedList {
         let currentNode = this.tail;
 
         for (let i = this.length - 2; i > 0; i--) {
-          // console.log("i", i)
-          // console.log("currentNode", currentNode)
           currentNode = currentNode.prev
           if (i === index - 1) {
             currentNode.next = currentNode.next.next
@@ -173,6 +168,6 @@ myLinkedList.insert(0, 38);
 myLinkedList.remove(5);
 
 console.log(myLinkedList.printList())
-console.log("myLinkedList.head: ", myLinkedList.head)
-console.log("myLinkedList.tail: ", myLinkedList.tail)
+// console.log("myLinkedList.head: ", myLinkedList.head)
+// console.log("myLinkedList.tail: ", myLinkedList.tail)
 // console.log("myLinkedList.tail.next: ", myLinkedList.tail.next)
