@@ -176,6 +176,10 @@ class LinkedList {
       this.length--
     }
   }
+
+  reverse() {
+    //TODO: Implement reverse
+  }
 }
 
 let myLinkedList = new LinkedList(10);
