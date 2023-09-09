@@ -11,6 +11,7 @@ class Stack {
     this.bottom = null;
     this.length = 0;
   }
+
   peek() {
     return this.top;
   }
@@ -47,7 +48,10 @@ class Stack {
     this.length--;
     return this;
   }
-  //isEmpty
+  
+  isEmpty() {
+    return this.length === 0
+  }
 }
 
 const myStack = new Stack();
