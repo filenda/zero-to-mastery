@@ -33,7 +33,10 @@ class Queue {
   }
 
   dequeue() {
-    if (this.length === 1) {
+    if (this.length === 0) {
+      return null;
+    }
+    else if (this.length === 1) {
       this.first = null;
       this.last = null;
     }
