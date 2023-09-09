@@ -178,8 +178,62 @@ class LinkedList {
   }
 
   //TODO: Implement reverse
+  //[ 38, 1, 99, 10, 5, 88 ]
+  //[ 88, 5, 10, 99, 1, 38 ]
   reverse() {
+    let arrayToTraverseBackwards = []
 
+    let currentNode = this.head
+
+    while (currentNode) {
+      arrayToTraverseBackwards.unshift(currentNode.value)
+
+      currentNode = currentNode.next
+    }
+
+    return arrayToTraverseBackwards
+  }
+
+  reverse2() {
+    if (this.length === 1)
+      return this
+
+    let currentNode = this.head
+
+    let newReversedList = new LinkedList(currentNode.value)
+
+    while (currentNode) {
+      console.log("currentNode", currentNode)
+      newReversedList.prepend(currentNode.value)
+
+      currentNode = currentNode.next
+    }
+
+    return newReversedList
+  }
+
+  //TOCHECK: This is the most intelligent implementation of the three found here
+  //and also the most space-efficient as it does not create another linked list
+  //just to hold the reversed version of the list
+  reverse3() {
+    if (!this.head.next) {
+      return this.head;
+    }
+
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+
+    this.head.next = null;
+    this.head = first;
+    return this.printList();
   }
 }
 
@@ -190,8 +244,9 @@ myLinkedList.prepend(1);
 myLinkedList.insert2(2, 99);
 myLinkedList.insert2(20, 88);
 myLinkedList.insert2(0, 38);
-// myLinkedList.remove(6);
+myLinkedList.remove(6);
 
 console.log(myLinkedList.printList())
-console.log(myLinkedList.head)
-console.log(myLinkedList.tail)
+console.log(myLinkedList.reverse2())
+// console.log(myLinkedList.head)
+// console.log(myLinkedList.tail)
