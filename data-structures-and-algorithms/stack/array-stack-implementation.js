@@ -1,9 +1,3 @@
-class Node {
-  constructor(value) {
-    this.value = value;
-  }
-}
-
 class Stack {
   constructor() {
     this.nodes = []
@@ -14,16 +8,20 @@ class Stack {
   }
 
   push(value) {
-    const newNode = new Node(value);
+    const newNode = value;
 
     this.nodes.push(newNode);
 
     return this;
   }
 
+  size() {
+    return this.nodes.length;
+  }
+
   pop() {
     //TOCHECK: built-in
-    this.nodes.pop();
+    return this.nodes.pop();
 
     //TOCHECK: ad-hoc
     // if (this.nodes.length === 0) {
@@ -39,14 +37,15 @@ class Stack {
     //   }
     //   this.nodes = newNodes
     // }
-
-    return this;
   }
 
   isEmpty() {
     return this.nodes.length === 0;
   }
 }
+
+module.exports = Stack;
+
 
 const myStack = new Stack();
 
@@ -55,7 +54,7 @@ myStack.push("udemy")
 myStack.push("discord")
 myStack.pop()
 // console.log(myStack.peek())
-console.log("myStack", myStack)
+// console.log("myStack", myStack)
 // console.log(myStack.isEmpty())
 
 
