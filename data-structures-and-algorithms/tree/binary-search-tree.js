@@ -48,6 +48,7 @@ class BinarySearchTree {
     }
   }
 
+  //TODO: The code freezes when calling lookup for the value '171'. Check why and fix.
   lookup(value) {
     let currentNode = this.root;
 
