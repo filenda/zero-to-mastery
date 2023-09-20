@@ -7,7 +7,7 @@ function findFactorialRecursive(number) {
     return 1;
   }
 
-  return number * findFactorialIterative(number - 1);
+  return number * findFactorialRecursive(number - 1);
 }
 
 //O (n)
@@ -24,5 +24,5 @@ function findFactorialIterative(number) {
   return answer;
 }
 
-console.log(findFactorialIterative(1))
-console.log(findFactorialRecursive(1))
+console.log(findFactorialIterative(5))
+console.log(findFactorialRecursive(5))
