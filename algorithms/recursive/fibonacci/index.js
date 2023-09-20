@@ -39,9 +39,9 @@ function fibonacciRecursive(n) {
     return 1
   }
   else {
-    return n + fibonacciRecursive(n - 1)
+    return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2)
   }
 }
 
 console.log(fibonacciIterative(9));
-// console.log(fibonacciRecursive(6));
+console.log(fibonacciRecursive(9));
