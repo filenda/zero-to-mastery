@@ -2,6 +2,10 @@
 // One should use recursive, the other should just use a for loop
 
 function findFactorialRecursive(number) {
+  if (number === 1) {
+    return 1;
+  }
+
   return number * findFactorialIterative(number - 1);
 }
 
@@ -18,5 +22,5 @@ function findFactorialIterative(number) {
   return answer;
 }
 
-console.log(findFactorialIterative(7))
-console.log(findFactorialRecursive(7))
+console.log(findFactorialIterative(1))
+console.log(findFactorialRecursive(1))
