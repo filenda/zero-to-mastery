@@ -13,34 +13,35 @@ function fibonacciIterative(n) {
 
   if (n === 0)
     return firstValue
-  if (n === 1)
+  else if (n === 1)
     return secondValue
-  if (n === 2)
+  else if (n === 2)
     return thirdValue
+  else {
+    for (let i = 3; i <= n; i++) {
+      var next = secondValue + thirdValue
+      secondValue = thirdValue
+      thirdValue = next
+    }
 
-  for (let i = 3; i <= n; i++) {
-    var next = secondValue + thirdValue
-    secondValue = thirdValue
-    thirdValue = next
+    return thirdValue
   }
-
-  return thirdValue
 }
 
-// function fibonacciRecursive(n) {
-//   if (n === 0) {
-//     return 0
-//   }
-//   else if (n === 1) {
-//     return 1
-//   }
-//   else if (n === 2) {
-//     return 1
-//   }
-//   else {
-//     return n + fibonacciRecursive(n - 1)
-//   }
-// }
+function fibonacciRecursive(n) {
+  if (n === 0) {
+    return 0
+  }
+  else if (n === 1) {
+    return 1
+  }
+  else if (n === 2) {
+    return 1
+  }
+  else {
+    return n + fibonacciRecursive(n - 1)
+  }
+}
 
 console.log(fibonacciIterative(9));
 // console.log(fibonacciRecursive(6));
