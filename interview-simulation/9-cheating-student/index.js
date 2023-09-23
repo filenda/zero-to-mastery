@@ -88,6 +88,7 @@ function find(words, note) {
 }
 
 //TOCHECK: working, O (m * n)
+//TODO: Try to make this less time complex
 function find2(words, note) {
   var incommingString = {}
 
