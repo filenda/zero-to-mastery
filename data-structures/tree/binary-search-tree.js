@@ -289,19 +289,65 @@ class BinarySearchTree {
       }
     }
   }
+
+  //TODO: Implement this yourself
+  breadthFirstSearch() { // BFS
+    let currentNode = this.root;
+    let list = [];
+    let queue = [];
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      list.push(currentNode.value);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return list;
+  }
+
+  //     9
+  //  4     20
+  //1  6  15  170
+
+  breadthFirstSearchRecursive(queue, list) {
+    if (!queue || queue.length === 0) {
+      return list
+    }
+
+    let currentNode = queue.shift();
+
+    list.push(currentNode.value);
+
+    if (currentNode.left) {
+      queue.push(currentNode.left)
+    }
+
+    if (currentNode.right) {
+      queue.push(currentNode.right)
+    }
+
+    return this.breadthFirstSearchRecursive(queue, list);
+  }
 }
 
 const tree = new BinarySearchTree();
 tree.insert(9)
 tree.insert(4)
-tree.insert(6)
 tree.insert(20)
-tree.insert(170)
-tree.insert(15)
 tree.insert(1)
-tree.insert(171)
-tree.remove(20)
+tree.insert(6)
+tree.insert(15)
+tree.insert(170)
+// tree.insert(171)
+// tree.remove(20)
 console.log(JSON.stringify(traverse(tree.root)))
+console.log(tree.breadthFirstSearch())
+console.log(tree.breadthFirstSearchRecursive([tree.root], []))
 // console.log(JSON.stringify(tree.lookup(170)))
 
 //     9
