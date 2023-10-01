@@ -310,10 +310,6 @@ class BinarySearchTree {
     return list;
   }
 
-  //     9
-  //  4     20
-  //1  6  15  170
-
   breadthFirstSearchRecursive(queue, list) {
     if (!queue || queue.length === 0) {
       return list
@@ -333,6 +329,39 @@ class BinarySearchTree {
 
     return this.breadthFirstSearchRecursive(queue, list);
   }
+
+  inOrderDepthFirstSearch() {
+    let list = []
+
+    var currentNode = this.root
+    list.push(currentNode.value)
+
+    while (currentNode.left) {
+      list.unshift(currentNode.left)
+    }
+
+    return list
+  }
+
+  //     9
+  //  4     20
+  //1  6  15  170
+
+  //1 4 6 9 15 20 170
+
+  inOrderDepthFirstSearchRecursive(currentNode) {
+    if (!currentNode) {
+      return []
+    }
+
+    if (!currentNode.left && !currentNode.right) {
+      return [currentNode.value]
+    }
+
+    return [...this.inOrderDepthFirstSearchRecursive(currentNode.left),
+    currentNode.value,
+    ...this.inOrderDepthFirstSearchRecursive(currentNode.right)]
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -345,10 +374,12 @@ tree.insert(15)
 tree.insert(170)
 // tree.insert(171)
 // tree.remove(20)
-console.log(JSON.stringify(traverse(tree.root)))
-console.log(tree.breadthFirstSearch())
-console.log(tree.breadthFirstSearchRecursive([tree.root], []))
+// console.log(JSON.stringify(traverse(tree.root)))
+// console.log(tree.breadthFirstSearch())
+// console.log(tree.breadthFirstSearchRecursive([tree.root], []))
 // console.log(JSON.stringify(tree.lookup(170)))
+// console.log(tree.inOrderDepthFirstSearch())
+console.log(tree.inOrderDepthFirstSearchRecursive(tree.root))
 
 //     9
 //  4     20
