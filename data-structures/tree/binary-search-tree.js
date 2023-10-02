@@ -362,14 +362,53 @@ class BinarySearchTree {
     currentNode.value,
     ...this.inOrderDepthFirstSearchRecursive(currentNode.right)]
   }
+
+  //     9
+  //  4     20
+  //1  6  15  170
+
+  //9 4 1 6 20 15 170
+  preOrderDepthFirstSearchRecursive(currentNode) {
+    if (!currentNode) {
+      return []
+    }
+
+    if (!currentNode.left && !currentNode.right) {
+      return [currentNode.value]
+    }
+
+    return [currentNode.value,
+    ...this.preOrderDepthFirstSearchRecursive(currentNode.left),
+    ...this.preOrderDepthFirstSearchRecursive(currentNode.right)]
+  }
+
+  //     9
+  //  4     20
+  //1  6  15  170
+
+  //1 6 4 15 170 20 9
+  postOrderDepthFirstSearchRecursive(currentNode) {
+    if (!currentNode) {
+      return []
+    }
+
+    if (!currentNode.left && !currentNode.right) {
+      return [currentNode.value]
+    }
+
+    return [
+      ...this.postOrderDepthFirstSearchRecursive(currentNode.left),
+      ...this.postOrderDepthFirstSearchRecursive(currentNode.right),
+      currentNode.value]
+  }
 }
 
 const tree = new BinarySearchTree();
 tree.insert(9)
 tree.insert(4)
-tree.insert(20)
 tree.insert(1)
 tree.insert(6)
+tree.insert(20)
 tree.insert(15)
 tree.insert(170)
 // tree.insert(171)
@@ -379,7 +418,9 @@ tree.insert(170)
 // console.log(tree.breadthFirstSearchRecursive([tree.root], []))
 // console.log(JSON.stringify(tree.lookup(170)))
 // console.log(tree.inOrderDepthFirstSearch())
-console.log(tree.inOrderDepthFirstSearchRecursive(tree.root))
+// console.log(tree.inOrderDepthFirstSearchRecursive(tree.root))
+// console.log(tree.preOrderDepthFirstSearchRecursive(tree.root))
+console.log(tree.postOrderDepthFirstSearchRecursive(tree.root))
 
 //     9
 //  4     20
