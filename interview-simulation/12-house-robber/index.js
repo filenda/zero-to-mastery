@@ -1,3 +1,4 @@
+//TOCHECK: Wrong
 function rob3(nums) {
   let firstIndexCounter = 0
   let firstIndexSum = 0
@@ -20,7 +21,8 @@ function rob3(nums) {
   return firstIndexSum > secondIndexSum ? firstIndexSum : secondIndexSum
 };
 
-function rob(nums, i) {
+//TOCHECK: Wrong
+function rob2(nums, i) {
   if (i === nums.length - 1) {
     return nums[i]
   }
@@ -28,7 +30,21 @@ function rob(nums, i) {
     return 0
   }
 
-  return nums[i] + rob(nums, i + 2)
+  return nums[i] + rob2(nums, i + 2)
+}
+
+//WORKING
+function rob(nums) {
+  let max = 0, nextMax = 0
+
+  for (var i = 0; i < nums.length; i++) {
+    let temp = Math.max(nums[i] + max, nextMax)
+    max = nextMax
+    nextMax = temp
+    console.log('maxSofar', temp)
+  }
+
+  return nextMax
 }
 
 // const rob = memoizedRob()
@@ -38,5 +54,7 @@ function rob(nums, i) {
 
 // [2,21,14,18,22]
 // 21+22 =43
-console.log(rob([2, 21, 14, 18, 22], 1))
+// console.log(rob([2, 21, 14, 18, 22], 1))
+
+console.log(rob([40, 2, 4, 10]))
 //TODO: Finish the exercise
