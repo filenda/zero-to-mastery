@@ -41,20 +41,31 @@ function rob(nums) {
     let temp = Math.max(nums[i] + max, nextMax)
     max = nextMax
     nextMax = temp
-    console.log('maxSofar', temp)
   }
 
   return nextMax
 }
 
-// const rob = memoizedRob()
+//WORKING
+function rob4(nums) {
 
-// [2, 7, 9, 3, 1]
-// console.log(rob([2, 7, 9, 3, 1], 0))
+  if (nums.length === 0) {
+    return 0
+  }
 
-// [2,21,14,18,22]
-// 21+22 =43
-// console.log(rob([2, 21, 14, 18, 22], 1))
+  let maxes = new Array(nums.length + 1).fill(0)
+  maxes[1] = nums[0]
 
-console.log(rob([40, 2, 4, 10]))
-//TODO: Finish the exercise
+  for (var i = 2; i <= nums.length; i++) {
+    maxes[i] = Math.max(nums[i - 1] + maxes[i - 2], maxes[i - 1])
+  }
+
+  return maxes[maxes.length - 1]
+}
+
+console.log(rob4([40, 2, 4, 10])) //50
+// console.log(rob4([2, 7, 9, 3, 1])) //12
+// console.log(rob4([])) //0
+// console.log(rob4([4])) //4
+// console.log(rob4([2, 5])) //5
+// console.log(rob4([4, 1, 2, 7, 5, 3, 1])) //14
