@@ -55,7 +55,7 @@ function maxSubArray3(nums) {
   return max
 }
 
-//Kadane's algorithm
+//working - kadane's algorithm O(n)
 function maxSubArray(nums) {
   let maxSum = nums[0]; // Initialize maxSum to the first element of the array.
   let currentSum = nums[0]; // Initialize currentSum to the first element of the array.
@@ -71,10 +71,39 @@ function maxSubArray(nums) {
   return maxSum;
 }
 
-// const nums = [-1, -2]
-// const nums = [-2, 1]
-// const nums = [-2, -1]
-const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-// const nums = [5, 4, -1, 7, 8]
-// const nums = [1]
-console.log(maxSubArray(nums));
+//working - tabulation still O(n)
+function maxSubArray4(nums) {
+
+  if (nums.length === 0) {
+    return 0
+  }
+
+  let maxes = new Array(nums.length + 1).fill(0)
+
+  for (let i = 0; i < nums.length; i++) {
+    maxes[i + 1] = Math.max(maxes[i] + nums[i], nums[i])
+  }
+
+  return Math.max(...maxes)
+}
+
+//TODO: Make a code that instead of returning the biggest sum, 
+//return the involved numbers inside the indexes instead
+
+// let nums1 = [-1, -2] //0
+// console.log(maxSubArray4(nums1));
+
+// let nums2 = [-2, 1] //1
+// console.log(maxSubArray4(nums2));
+
+// let nums3 = [-2, -1] //0
+// console.log(maxSubArray4(nums3));
+
+// let nums4 = [-2, 1, -3, 4, -1, 2, 1, -5, 4] //6
+// console.log(maxSubArray4(nums4));
+
+let nums5 = [5, 4, -1, 7, 8] //23
+console.log(maxSubArray4(nums5));
+
+// let nums6 = [1] //1
+// console.log(maxSubArray4(nums6));
