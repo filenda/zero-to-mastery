@@ -78,15 +78,36 @@ function groupAnagrams(strs: string[]): string[][] {
 }
 
 function groupAnagrams2(strs: string[]): string[][] {
-  let result: string[][] = []
+  let results: string[][] = []
+  let resultsHashTable: Map<string, string[]> = new Map();
 
-  
+  for (let str of strs) {
+    let key: number[] = Array(26).fill(0)
 
-  return result
+    for (let char of str) {
+      let index = char.charCodeAt(0) - "a".charCodeAt(0)
+      key[index]++
+    }
+
+    let strKey = key.join()
+
+    if (resultsHashTable.has(strKey)) {
+      resultsHashTable.set(strKey, [...resultsHashTable.get(strKey), str])
+    }
+    else {
+      resultsHashTable.set(strKey, [str])
+    }
+  }
+
+  for (const [key, value] of resultsHashTable) {
+    results.push(value)
+  }
+
+  return results
 }
 
-console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])) // [["bat"],["nat","tan"],["ate","eat","tea"]]
-console.log(groupAnagrams([""])) // [[""]]
-console.log(groupAnagrams(["a"])) // [["a"]]
-console.log(groupAnagrams([])) // [[]]
-console.log(groupAnagrams(["", ""])) // [['', '']]
+console.log(groupAnagrams2(["eat", "tea", "tan", "ate", "nat", "bat"])) // [["bat"],["nat","tan"],["ate","eat","tea"]]
+console.log(groupAnagrams2([""])) // [[""]]
+console.log(groupAnagrams2(["a"])) // [["a"]]
+console.log(groupAnagrams2([])) // [[]]
+console.log(groupAnagrams2(["", ""])) // [['', '']]
