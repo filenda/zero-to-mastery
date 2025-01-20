@@ -49,7 +49,7 @@ var hasCycle2 = function (head) {
 
 //TOCHECK: This one works for all edge cases, and the only difference is that
 // it puts the entire object in the set, instead of just the value.
-var hasCycle = function (head) {
+var hasCycle1 = function (head) {
   if (!head)
     return false
 
@@ -78,3 +78,33 @@ var hasCycle = function (head) {
 
   return cycleIndex !== -1
 };
+
+//TOCHECK: Took 20 mins. This is the optimal version because it
+// has a big O of only O(1) 
+var hasCycle = function (head) {
+  if (!head || !head.next)
+    return false
+
+  let slow = head
+  let fast = head
+
+  while (slow || fast) {
+    slow = slow.next
+    fast = fast?.next?.next
+
+    if (slow === fast)
+      return true
+  }
+
+  return false
+}
+
+//slow, fast = 3
+//slow = 2, fast = 0
+//slow = 0, fast = 2
+//slow = -4, fast = -4
+
+
+//[1,2]
+//slow, fast = 1
+//slow = 2, fast = null
