@@ -1,4 +1,4 @@
-function hasPath(graph, src, dst) {
+function hasPathDFS(graph, src, dst) {
   if (src === dst) {
     return true
   }
@@ -11,6 +11,23 @@ function hasPath(graph, src, dst) {
   return false
 }
 
+//TOCHECK: Took 10 min
+function hasPathBFS(graph, src, dst) {
+  let queue = [src]
+
+  while (queue.length > 0) {
+    let curr = queue.shift()
+
+    if (curr === dst) {
+      return true
+    }
+
+    for (let neighbor of graph[curr]) {
+      queue.push(neighbor)
+    }
+  }
+}
+
 const graph = {
   f: ['g', 'i'],
   g: ['h'],
@@ -20,4 +37,5 @@ const graph = {
   k: []
 }
 
-console.log(hasPath(graph, 'f', 'k')) // true
+// console.log(hasPathDFS(graph, 'f', 'k')) // true
+console.log(hasPathBFS(graph, 'f', 'k')) // true
