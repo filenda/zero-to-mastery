@@ -33,6 +33,10 @@ const shortestPath = (edges, nodeA, nodeB) => {
       }
     }
   }
+
+  console.log('weight', -1)
+
+  return -1
 }
 
 function buildGraph(edges) {
@@ -100,17 +104,17 @@ function buildGraph(edges) {
 
 // shortestPath(edges, 'e', 'c') // -> 2
 
-// const edges = [
-//   ['a', 'c'],
-//   ['a', 'b'],
-//   ['c', 'b'],
-//   ['c', 'd'],
-//   ['b', 'd'],
-//   ['e', 'd'],
-//   ['g', 'f']
-// ]
+const edges = [
+  ['a', 'c'],
+  ['a', 'b'],
+  ['c', 'b'],
+  ['c', 'd'],
+  ['b', 'd'],
+  ['e', 'd'],
+  ['g', 'f']
+]
 
-// shortestPath(edges, 'b', 'g') // -> -1
+shortestPath(edges, 'b', 'g') // -> -1
 
 // const edges = [
 //   ['c', 'n'],
@@ -132,14 +136,14 @@ function buildGraph(edges) {
 
 // shortestPath(edges, 'n', 'e') // -> 2
 
-const edges = [
-  ['m', 'n'],
-  ['n', 'o'],
-  ['o', 'p'],
-  ['p', 'q'],
-  ['t', 'o'],
-  ['r', 'q'],
-  ['r', 's']
-]
+// const edges = [
+//   ['m', 'n'],
+//   ['n', 'o'],
+//   ['o', 'p'],
+//   ['p', 'q'],
+//   ['t', 'o'],
+//   ['r', 'q'],
+//   ['r', 's']
+// ]
 
-shortestPath(edges, 'm', 's') // -> 6
+// shortestPath(edges, 'm', 's') // -> 6
